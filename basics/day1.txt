@@ -1,0 +1,35 @@
+package main
+
+import (
+	"fmt"
+	"math"
+	// "io"
+	// "os"
+)
+
+// func main(){
+// 	// var name = "Hello World, " + "vishwas"
+// 	// fmt.Println(name)
+// 	/* This is also a comment */
+// 	message := "Hi I am learning GO"
+	
+// 	var name = "vishwas"
+// 	s := fmt.Sprintf("Hi, %s. Welcome to Go language\n", name)
+// 	io.WriteString(os.Stdout, s)
+// 	fmt.Println(message)
+// }
+
+
+func main(){
+	// Area calculator
+	// given a circle radius calculate the area
+	// pi r 2
+
+	radius := 5.0
+
+	area := math.Pi * math.Pow(radius, 2)
+
+	fmt.Printf("Radius: %.2f\n", radius)
+	fmt.Printf("Area: %.2f\n", area)
+
+}

@@ -1,0 +1,89 @@
+package main
+
+import (
+	"fmt"
+)
+
+
+// func main(){
+// 	// array of 3 strings
+// 	var fruits [3]string
+// 	fruits[0] = "mango"
+// 	fruits[1] = "grapes"
+// 	fruits[2] = "papaya"
+
+// 	// define an array in single line
+// 	primes := [5]int{2,3,5,7,11}
+
+// 	fmt.Println("Fruits: ", fruits)
+// 	fmt.Println("Primes: ", primes)
+// 	fmt.Println("Length of primes: ", len(primes))
+
+// }
+
+// func main(){
+// 	// Creating a slice
+// 	colors := []string{"Red","Green","Blue"}
+
+// 	// Add element to slice
+// 	colors = append(colors, "Yellow")
+
+// 	// Slicing an existing slice/array [start:end] end is exclusive
+// 	primaryColors := colors[0:3]
+
+// 	// Initializing Empty Slice make([]type,length, capacity)
+// 	numbers := make([]int, 3)
+
+// 	fmt.Println("Colors: ", colors)
+// 	fmt.Println("Primary Colors: ", primaryColors)
+// 	fmt.Println("Numbers len & capacity", numbers ,len(numbers), cap(numbers))
+// }
+
+// func main(){
+// 	// map[KeyType]ValueType
+// 	// Create a map of inventory
+// 	inventory := make(map[string]int)
+
+// 	inventory["mango"] = 10
+// 	inventory["grapes"] = 25
+	
+// 	// short-hand
+// 	userRoles := map[string]string{
+// 		"Vishwas": "Admin",
+// 		"karan": "User",
+// 	}
+
+// 	fmt.Println("Inventory: ", inventory)
+// 	fmt.Println("User Roles: ", userRoles)
+// }
+
+// Define a Blue Print
+type Employee struct{
+	ID int
+	Name string
+	Position string
+	Active bool
+}
+
+func main(){
+
+	emp1 := Employee{
+		ID: 101,
+		Name: "Vishwas",
+		Position: "Consultant",
+		Active: true,
+	}
+
+	fmt.Println("Employee Name: ", emp1.Name)
+
+	emp1.Active = false
+
+	// Anonymous Struct
+	point := struct{
+		X int
+		Y int
+	}{X: 10, Y: 20}
+
+	fmt.Println("Point: ", point)
+
+}
