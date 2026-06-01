@@ -2,45 +2,74 @@ package main
 
 import "fmt"
 
-// func divide(numerator, denominator float64)(float64, error){
-// 	if denominator == 0 {
-// 		return 0, fmt.Errorf("Cannot divide by 0")
-// 	}
-
-// 	return numerator / denominator, nil
-// }
-
-// func main(){
-// 	result, err := divide(10,20)
-
-// 	if err != nil{
-// 		fmt.Println("Error: ",err)
-// 	} else {
-// 		fmt.Println("Result: ", result)
-// 	}
-// }
-
-
-type Rectangle struct {
-	Width, Height float64
-}
-
-// Value Receiver -> 
-func (r Rectangle) Area() float64{
-	return r.Width * r.Height
-}
-
-// Pointer Receiver -> actual value is directly passed
-func (r *Rectangle) Scale(factor float64){
-	r.Width = r.Width * factor
-	r.Height = r.Height * factor
-}
-
 func main(){
-	rect := Rectangle{Width: 10, Height:5}
+	// Standard Counter based loop
+	// for v:= 1; v<=5; v++{
+	// 	fmt.Println("Iteration: ", v)
+	// }
 
-	fmt.Println("Initial Area:", rect.Area()) // 50
+	// while loop approach
+	// count := 1
+	// for count <=3{
+	// 	fmt.Println("Iteration: ", count)
+	// 	count++
+	// }
 
-	rect.Scale(2) // Width: 20, Height: 10
-	fmt.Println("New Area:", rect.Area()) // 200
+	// Infinite Loop
+	// iterations := 0
+
+	// for {
+	// 	iterations++
+
+	// 	if iterations > 3{
+	// 		fmt.Println("Breaking out of infinite loop")
+	// 		break
+	// 	}
+	// 	fmt.Println("Running continuously......")
+
+	// }
+
+	// for range loop
+	// services := []string{"AuthAPI", "PaymentGateway","DatabaseWatcher"}
+
+	// for index,name := range services{
+	// 	fmt.Printf("Index: %d | Service Name: %s\n", index, name)
+	// }
+
+	// status := ""
+
+	// switch status{
+	// case "active":
+	// 	fmt.Println("Service is running")
+	// case "down":
+	// 	fmt.Println("Alert! Service is unreachable")
+	// case "maintenance":
+	// 	fmt.Println("Service is under maintenance")
+	// default:
+	// 	fmt.Println("Unknoown status")
+	// }
+
+	// day := "Saturday"
+
+	// switch day{
+	// case "Monday", "Tuesday", "Wednesday","Thursday","Friday":
+	// 	fmt.Println("Its a week day")
+	// case "Saturday", "Sunday":
+	// 	fmt.Println("Its a weekend")
+	// default:
+	// 	fmt.Println("Invalid Day")
+	// }
+
+	step := 1
+
+	switch step{
+	case 1:
+		fmt.Println("Step 1: Fetching metrics")
+		fallthrough
+	case 2:
+		fmt.Println("Step 2: Parsing JSON")
+		fallthrough
+	case 3:
+		fmt.Println("Step 3: Persisting to Database")
+	}
 }
