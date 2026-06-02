@@ -1,75 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+func checkStatus(serviceName string){
+	fmt.Printf("Starting the monitoring process for %s.....\n", serviceName)
+	time.Sleep(10000 * time.Millisecond)
+	fmt.Printf("Service %s is Healthy\n", serviceName)
+}
 
 func main(){
-	// Standard Counter based loop
-	// for v:= 1; v<=5; v++{
-	// 	fmt.Println("Iteration: ", v)
-	// }
+	go checkStatus("AuthAPI")
+	go checkStatus("Payment Gateway")
+	go checkStatus("Database Cluster")
 
-	// while loop approach
-	// count := 1
-	// for count <=3{
-	// 	fmt.Println("Iteration: ", count)
-	// 	count++
-	// }
-
-	// Infinite Loop
-	// iterations := 0
-
-	// for {
-	// 	iterations++
-
-	// 	if iterations > 3{
-	// 		fmt.Println("Breaking out of infinite loop")
-	// 		break
-	// 	}
-	// 	fmt.Println("Running continuously......")
-
-	// }
-
-	// for range loop
-	// services := []string{"AuthAPI", "PaymentGateway","DatabaseWatcher"}
-
-	// for index,name := range services{
-	// 	fmt.Printf("Index: %d | Service Name: %s\n", index, name)
-	// }
-
-	// status := ""
-
-	// switch status{
-	// case "active":
-	// 	fmt.Println("Service is running")
-	// case "down":
-	// 	fmt.Println("Alert! Service is unreachable")
-	// case "maintenance":
-	// 	fmt.Println("Service is under maintenance")
-	// default:
-	// 	fmt.Println("Unknoown status")
-	// }
-
-	// day := "Saturday"
-
-	// switch day{
-	// case "Monday", "Tuesday", "Wednesday","Thursday","Friday":
-	// 	fmt.Println("Its a week day")
-	// case "Saturday", "Sunday":
-	// 	fmt.Println("Its a weekend")
-	// default:
-	// 	fmt.Println("Invalid Day")
-	// }
-
-	step := 1
-
-	switch step{
-	case 1:
-		fmt.Println("Step 1: Fetching metrics")
-		fallthrough
-	case 2:
-		fmt.Println("Step 2: Parsing JSON")
-		fallthrough
-	case 3:
-		fmt.Println("Step 3: Persisting to Database")
-	}
+	time.Sleep(15 * time.Second)
+	fmt.Println("All initial checks executed")
 }

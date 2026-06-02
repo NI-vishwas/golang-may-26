@@ -1,0 +1,60 @@
+package main
+
+import (
+	"fmt"
+	"time"
+	"context"
+)
+
+type Item struct{
+	ID int
+	Value string
+	Timestamp time.Time
+}
+
+func DataGenerator(ctx context.Context, limit int) <-chan Item {
+	// Creates unbuffered channel
+	out := make(chan Item)
+
+	// Create a anonymous function & call as go routine
+	go func(){
+		defer close(out)
+
+		for i:=1; i<= limit; i++{
+			time.Sleep(200 * time.Millisecond)
+
+			item := Item{
+				ID: i,
+				Value: fmt.Sprintf("Data Payload-%d",i),
+				Timestamp: time.Now(),
+			}
+
+			select{
+			case <-ctx.Done():
+				fmt.Println("Cleanup, Exiting")
+			case out <- item:
+
+			}
+		}
+		fmt.Println("[Generator] Finished generating all items")
+	}()
+
+	return out
+}
+
+
+func main(){
+	ctx, cancel := context.WithTimeout(context.Background(), 1500*time.Millisecond)
+	defer cancel()
+
+	fmt.Println("[Main] Starting Generator....")
+
+	itemsChan := DataGenerator(ctx,10)
+
+	for item := range itemsChan{
+		fmt.Printf("[Main] Received: ID=%d|Value=%s|Time=%s\n",item.ID, item.Value, item.Timestamp.Format("15:04:05.000"))
+		time.Sleep(100*time.Millisecond)
+	}
+
+	fmt.Println("[Main] Execution Finished..")
+}
